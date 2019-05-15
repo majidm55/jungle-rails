@@ -60,6 +60,17 @@ main section.categories-show {
         }
       }
 
+      aside.sold-out {
+        background-color: crimson;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top-left-radius: 4px;
+        border-bottom-right-radius: 20px;
+        padding: 10px;
+      }
+
+
     }
   }
 }
