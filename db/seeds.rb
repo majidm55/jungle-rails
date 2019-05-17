@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-puts "Seeding Data ..."
+
+
 
 # Helper functions
 def open_asset(file_name)
@@ -20,6 +21,12 @@ unless Rails.env.development?
 end
 
 # Let's do this ...
+## REVIEWS
+puts "Finding or Creating Categories ..."
+
+cat1 = Category.find_or_create_by! name: 'Apparel'
+cat2 = Category.find_or_create_by! name: 'Electronics'
+cat3 = Category.find_or_create_by! name: 'Furniture'
 
 ## CATEGORIES
 
@@ -35,7 +42,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+product1 = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -43,7 +50,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+product2 = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -51,7 +58,7 @@ cat1.products.create!({
   price: 124.99
 })
 
-cat1.products.create!({
+product3 = cat1.products.create!({
   name:  'Hipster Hat',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel3.jpg'),
@@ -130,6 +137,28 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
+})
+
+puts "Seeding Reviews ..."
+
+Review.destroy_all
+
+product1.reviews.create!({
+  user_id: 1,
+  description: "A+ would recommend.",
+  rating: 5,
+})
+
+product2.reviews.create!({
+  user_id: 1,
+  description: "Could be better.",
+  rating: 3,
+})
+
+product3.reviews.create!({
+  user_id: 1,
+  description: "Wouldn't recommend.",
+  rating: 1,
 })
 
 
