@@ -38,6 +38,7 @@ gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "letter_opener", :group => :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'dotenv-rails'
 end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
