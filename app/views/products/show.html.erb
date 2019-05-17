@@ -25,6 +25,18 @@
 
         </dl>
       </div>
+      <div class ='review-form'>
+        <h3>Add a comment:</h3>
+          <div class="col-sm-6 col-sm-offset-1">
+            <%= form_for [@product, @review], url: `/products/#{@product.id}/reviews` do |form| %>
+              <h4>Ratings</h4>
+              <%= form.text_area :description %>
+              <%= form.select :rating, [1, 2, 3, 4, 5] %>
+              <%= form.submit "Create" %>
+              <% end %>
+          </div>
+        </div>
+
             <div class="col-sm-8">
         <dl class="dl-horizontal">
         <% @product.reviews.each do |review|%>
