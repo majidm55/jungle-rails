@@ -1,5 +1,5 @@
 <section class="products-show">
-
+<%= notice %>
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
@@ -29,8 +29,8 @@
         <h3>Add a comment:</h3>
           <div class="col-sm-6 col-sm-offset-1">
             <%= form_for [@product, @review], url: `/products/#{@product.id}/reviews` do |form| %>
-              <h4>Ratings</h4>
               <%= form.text_area :description %>
+              <h4>Ratings</h4>
               <%= form.select :rating, [1, 2, 3, 4, 5] %>
               <%= form.submit "Create" %>
               <% end %>
@@ -39,8 +39,9 @@
 
             <div class="col-sm-8">
         <dl class="dl-horizontal">
+        
+        <h3>Comments: </h3>
         <% @product.reviews.each do |review|%>
-        <h3>Comments</h3>
           <dt>Description</dt>
           <dd><%= review.description %></dd>
            <dt>Rating</dt>
